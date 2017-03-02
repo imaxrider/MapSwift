@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import GoogleMaps
+class ViewController: UIViewController{
 
-class ViewController: UIViewController {
-
+    
+      @IBOutlet weak var Gmap: GMSMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
+        let camera = GMSCameraPosition.camera(withLatitude:13.752367, longitude: 100.499636, zoom: 12)
+        Gmap.camera = camera
+
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude:13.752367, longitude: 100.499636)
+        marker.title = "Thailand"
+        marker.snippet = "Bangkok"
+        marker.map = Gmap
+        
     }
 
     override func didReceiveMemoryWarning() {
